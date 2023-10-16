@@ -1,2 +1,2 @@
 # korbaa
- an app that helps you connect with your relatives
+ an app that helps you connect with your relatives.
