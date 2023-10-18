@@ -163,7 +163,324 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: 40.0,
+                      ),
+                      Text(
+                        'الزيارات',
+                        style: const TextStyle(
+                          fontFamily: "El Messiri",
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff000000),
+                          height: 31 / 20,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/uncle1.png',
+                              height: 40.0,
+                              width: 40.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'يوسف محمد',
+                                   style: const TextStyle(
+                                    fontFamily: "El Messiri",
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                    height: 31 / 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                             Text('18/10/2023',
+                             style: TextStyle(
+                             fontFamily: "El Messiri",
+                             fontSize: 10.0,
+                             fontWeight: FontWeight.w700,
+                             color: Color(0xff86929B),
+                             height: 31 / 20,
+                             
+                                  ),
+                                  textAlign: TextAlign.center,
+                            ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                            ),
+                            Icon(Icons.call),
+                          ],
+                        ),
+                      ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Divider(
+                          thickness: 1.0,
+                          height: 5.0,
+                        ),
+                        Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/uncle1.png',
+                              height: 40.0,
+                              width: 40.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'يوسف محمد',
+                                   style: const TextStyle(
+                                    fontFamily: "El Messiri",
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                    height: 31 / 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                             Text('18/10/2023',
+                             style: TextStyle(
+                             fontFamily: "El Messiri",
+                             fontSize: 10.0,
+                             fontWeight: FontWeight.w700,
+                             color: Color(0xff86929B),
+                             height: 31 / 20,
+                             
+                                  ),
+                                  textAlign: TextAlign.center,
+                            ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                            ),
+                            Icon(Icons.call),
+                          ],
+                        ),
+                      ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Divider(
+                          thickness: 1.0,
+                          height: 5.0,
+                        ),                        
+                        Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/uncle1.png',
+                              height: 40.0,
+                              width: 40.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'يوسف محمد',
+                                   style: const TextStyle(
+                                    fontFamily: "El Messiri",
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                    height: 31 / 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                             Text('18/10/2023',
+                             style: TextStyle(
+                             fontFamily: "El Messiri",
+                             fontSize: 10.0,
+                             fontWeight: FontWeight.w700,
+                             color: Color(0xff86929B),
+                             height: 31 / 20,
+                             
+                                  ),
+                                  textAlign: TextAlign.center,
+                            ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                            ),
+                            Icon(Icons.call),
+                          ],
+                        ),
+                      ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Divider(
+                          thickness: 1.0,
+                          height: 5.0,
+                        ),
+                        Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/uncle1.png',
+                              height: 40.0,
+                              width: 40.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'يوسف محمد',
+                                   style: const TextStyle(
+                                    fontFamily: "El Messiri",
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                    height: 31 / 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                             Text('18/10/2023',
+                             style: TextStyle(
+                             fontFamily: "El Messiri",
+                             fontSize: 10.0,
+                             fontWeight: FontWeight.w700,
+                             color: Color(0xff86929B),
+                             height: 31 / 20,
+                             
+                                  ),
+                                  textAlign: TextAlign.center,
+                            ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                            ),
+                            Icon(Icons.call),
+                          ],
+                        ),
+                      ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Divider(
+                          thickness: 1.0,
+                          height: 5.0,
+                        ),
+                        Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/uncle1.png',
+                              height: 40.0,
+                              width: 40.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'يوسف محمد',
+                                   style: const TextStyle(
+                                    fontFamily: "El Messiri",
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                    height: 31 / 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                             Text('18/10/2023',
+                             style: TextStyle(
+                             fontFamily: "El Messiri",
+                             fontSize: 10.0,
+                             fontWeight: FontWeight.w700,
+                             color: Color(0xff86929B),
+                             height: 31 / 20,
+                             
+                                  ),
+                                  textAlign: TextAlign.center,
+                            ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                            ),
+                            Icon(Icons.call),
+                          ],
+                        ),
+                      ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Divider(
+                          thickness: 1.0,
+                          height: 5.0,
+                        ),
+                        Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/uncle1.png',
+                              height: 40.0,
+                              width: 40.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'يوسف محمد',
+                                   style: const TextStyle(
+                                    fontFamily: "El Messiri",
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                    height: 31 / 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                             Text('18/10/2023',
+                             style: TextStyle(
+                             fontFamily: "El Messiri",
+                             fontSize: 10.0,
+                             fontWeight: FontWeight.w700,
+                             color: Color(0xff86929B),
+                             height: 31 / 20,
+                             
+                                  ),
+                                  textAlign: TextAlign.center,
+                            ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                            ),
+                            Icon(Icons.call),
+                          ],
+                        ),
+                      ),
+                      
                     ],
                   ),
                 ),
