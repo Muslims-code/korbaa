@@ -1,24 +1,32 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-enum FrequencyUnit { weekly, monthly }
+enum FrequencyUnit { week, month, year }
 
-
-class VisitFrequency {
-  FrequencyUnit unit;
-  int frequencyCount; 
+class Frequency {
+  // X {frequencyVariable} per {unit}
+  // examples:
+  // 3 times per month
+  final FrequencyUnit unit;
+  // we might add the idea of two times per two weeks for example
+  final int frequencyVariable;
+  // determines how many times you want to visit your relative
   
-  VisitFrequency({
+  final int visitCount;
+  Frequency({
     required this.unit,
-    required this.frequencyCount,
+    required this.frequencyVariable,
+    required this.visitCount,
   });
 
 
-  VisitFrequency copyWith({
+  Frequency copyWith({
     FrequencyUnit? unit,
-    int? frequencyCount,
+    int? frequencyVariable,
+    int? visitCount,
   }) {
-    return VisitFrequency(
+    return Frequency(
       unit: unit ?? this.unit,
-      frequencyCount: frequencyCount ?? this.frequencyCount,
+      frequencyVariable: frequencyVariable ?? this.frequencyVariable,
+      visitCount: visitCount ?? this.visitCount,
     );
   }
 }

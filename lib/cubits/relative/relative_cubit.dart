@@ -10,4 +10,5 @@ class RelativeCubit extends Cubit<RelativeState> {
     emit(state.copyWith(name: name));
   }
   
+  
 }

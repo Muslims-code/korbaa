@@ -7,21 +7,31 @@ class RelativeState extends Equatable {
   final String? address;
   final String? image;
   final DateTime? visitDate;
-  final VisitFrequency? visitFrequency;
+  final DateTime? startDate;
+  final DateTime? endDate;
+  final Frequency? visitFrequency;
   RelativeState({
-     this.name,
+    this.name,
+    this.startDate,
+    this.endDate,
     this.visitDate,
     this.phone,
     this.address,
     this.image,
-     this.visitFrequency,
+    this.visitFrequency,
   });
 
-
-
   @override
-  List<Object?> get props => [name, phone, address, image, visitFrequency,visitDate];
- 
+  List<Object?> get props => [
+        name,
+        phone,
+        address,
+        image,
+        visitFrequency,
+        visitDate,
+        startDate,
+        endDate
+      ];
 
   RelativeState copyWith({
     String? name,
@@ -29,10 +39,14 @@ class RelativeState extends Equatable {
     String? address,
     String? image,
     DateTime? visitDate,
-    VisitFrequency? visitFrequency,
+    DateTime? startDate,
+    DateTime? endDate,
+    Frequency? visitFrequency,
   }) {
     return RelativeState(
       visitDate: visitDate ?? this.visitDate,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
       name: name ?? this.name,
       phone: phone ?? this.phone,
       address: address ?? this.address,

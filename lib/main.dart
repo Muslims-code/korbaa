@@ -27,11 +27,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int clickedButton = 0;
   @override
   Widget build(BuildContext context) {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: clickedButton,
+              onTap: (index) {
+                setState(() {
+                  clickedButton = index;
+                });
+              },
+              items: [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.person), label: "person"),
+              ],
+            ),
             backgroundColor: const Color(0xffC0D1DD),
             appBar: AppBar(
               elevation: 0.0,
@@ -186,16 +200,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(top: 20.0, right: 20, left: 20),
-                      child: ListView.builder(
-                          clipBehavior: Clip.hardEdge,
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: 20,
-                          itemBuilder: (context, index) =>
-                              const RelativeTile()),
-                    ),
+                    child: ListView.builder(
+                        clipBehavior: Clip.hardEdge,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: 20,
+                        itemBuilder: (context, index) => const RelativeTile()),
                   )
                 ])));
   }
@@ -225,42 +234,46 @@ class RelativeTile extends StatelessWidget {
           SizedBox(
             width: 10.0,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'يوسف محمد',
-                style: const TextStyle(
-                  fontFamily: "El Messiri",
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff000000),
-                  height: 31 / 20,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'يوسف محمد',
+                      style: const TextStyle(
+                        fontFamily: "El Messiri",
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff000000),
+                        height: 31 / 20,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      '18/10/2023',
+                      style: TextStyle(
+                        fontFamily: "El Messiri",
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff86929B),
+                        height: 31 / 20,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                '18/10/2023',
-                style: TextStyle(
-                  fontFamily: "El Messiri",
-                  fontSize: 10.0,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff86929B),
-                  height: 31 / 20,
+                IconButton(
+                  splashRadius: 20,
+                  onPressed: () {},
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  icon: const Icon(Icons.call),
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-          SizedBox(
-            width: 150.0,
-          ),
-          IconButton(
-            splashRadius: 20,
-            onPressed: () {},
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            icon: const Icon(Icons.call),
+              ],
+            ),
           ),
         ],
       ),
