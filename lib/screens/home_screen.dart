@@ -30,7 +30,12 @@ class _MyHomePageState extends State<HomePage> {
             floatingActionButton: clickedButton == 1
                 ? FloatingActionButton(
                     backgroundColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddRelativeScreen()));
+                    },
                     child: Icon(
                       Icons.add,
                       color: Colors.black,
