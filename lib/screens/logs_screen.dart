@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:korbaa/widgets/widgets.dart';
 
@@ -18,7 +16,11 @@ class _LogsScreenState extends State<LogsScreen> {
       children: [
         Container(
           padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
-          child: EditText(searchController: _searchController),
+          child: EditText(
+            searchController: _searchController,
+            icon: Icons.search,
+            hint: 'اكتب اسم القريب',
+          ),
         ),
         Expanded(
           child: ListView.builder(
@@ -36,5 +38,3 @@ class _LogsScreenState extends State<LogsScreen> {
     );
   }
 }
-
-

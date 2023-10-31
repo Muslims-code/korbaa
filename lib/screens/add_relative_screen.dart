@@ -9,6 +9,13 @@ class AddRelativeScreen extends StatefulWidget {
 }
 
 class _AddRelativeScreenState extends State<AddRelativeScreen> {
+  // Dropdown Items
+  var items = [
+    'في الشهر',
+    'في الأسبوع',
+    'في السنة',
+  ];
+  String dropDownValue = 'في الشهر';
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -77,9 +84,100 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                       ),
                     ],
                   ),
-                  EditText(
-                    searchController: TextEditingController(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 20),
+                    child: EditText(
+                      icon: Icons.person,
+                      hint: 'اكتب اسم القريب',
+                      searchController: TextEditingController(),
+                    ),
                   ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                    child: EditText(
+                      icon: Icons.phone,
+                      hint: 'اكتب رقم القريب',
+                      searchController: TextEditingController(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 20),
+                    child: EditText(
+                      icon: Icons.home,
+                      hint: 'أضف عنوان القريب',
+                      searchController: TextEditingController(),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            right: 30, left: 30, top: 20, bottom: 10),
+                        child: Text("كم مرة تود زيارة القريب ؟"),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: EditText(
+                            isNumber: true,
+                            icon: Icons.numbers,
+                            hint: 'اكتب عدد المرات',
+                            searchController: TextEditingController(),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: DropdownButtonHideUnderline(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              child: DropdownButton(
+                                dropdownColor: Colors.white,
+
+                                // Initial Value
+                                value: dropDownValue,
+                                isDense: true,
+
+                                padding: EdgeInsets.all(7),
+                                borderRadius: BorderRadius.circular(10),
+                                // Down Arrow Icon
+                                icon: const Icon(Icons.keyboard_arrow_down),
+
+                                // Array list of items
+                                items: items.map((String items) {
+                                  return DropdownMenuItem(
+                                    value: items,
+                                    child: Text(items),
+                                  );
+                                }).toList(),
+                                // After selecting the desired option,it will
+                                // change button value to selected value
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    dropDownValue = newValue!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             )));
