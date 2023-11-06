@@ -1,5 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:korbaa/cubits/visits/visits_cubit.dart';
 import 'package:korbaa/widgets/widgets.dart';
+
+import '../models/models.dart';
 
 class AddRelativeScreen extends StatefulWidget {
   const AddRelativeScreen({Key? key}) : super(key: key);
@@ -15,7 +22,26 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
     'في الأسبوع',
     'في السنة',
   ];
+  TextEditingController nameController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController visitCountController = TextEditingController();
+
   String dropDownValue = 'في الشهر';
+
+  FrequencyUnit textToFrequencyUnit(String text) {
+    switch (text) {
+      case 'في الأسبوع':
+        return FrequencyUnit.week;
+      case 'في السنة':
+        return FrequencyUnit.year;
+      default:
+        return FrequencyUnit.month;
+    }
+  }
+
+  XFile? image;
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -57,11 +83,19 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                             borderRadius: BorderRadius.circular(100),
                             color: const Color(0xff0a4d68),
                           ),
-                          child: Icon(
-                            Icons.person,
-                            size: 100,
-                            color: Colors.white,
-                          )),
+                          child: image == null
+                              ? Icon(
+                                  Icons.person,
+                                  size: 100,
+                                  color: Colors.white,
+                                )
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.file(
+                                    File(image!.path),
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
                       Positioned(
                         child: Container(
                             width: 30,
@@ -72,7 +106,12 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                             ),
                             child: IconButton(
                               splashRadius: 1,
-                              onPressed: () {},
+                              onPressed: () async {
+                                final ImagePicker picker = ImagePicker();
+                                image = await picker.pickImage(
+                                    source: ImageSource.gallery);
+                                setState(() {});
+                              },
                               icon: Icon(
                                 Icons.edit,
                                 size: 15,
@@ -90,7 +129,7 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                     child: EditText(
                       icon: Icons.person,
                       hint: 'اكتب اسم القريب',
-                      searchController: TextEditingController(),
+                      searchController: nameController,
                     ),
                   ),
                   Padding(
@@ -99,7 +138,7 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                     child: EditText(
                       icon: Icons.phone,
                       hint: 'اكتب رقم القريب',
-                      searchController: TextEditingController(),
+                      searchController: numberController,
                     ),
                   ),
                   Padding(
@@ -108,7 +147,7 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                     child: EditText(
                       icon: Icons.home,
                       hint: 'أضف عنوان القريب',
-                      searchController: TextEditingController(),
+                      searchController: addressController,
                     ),
                   ),
                   Row(
@@ -131,7 +170,7 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                             isNumber: true,
                             icon: Icons.numbers,
                             hint: 'اكتب عدد المرات',
-                            searchController: TextEditingController(),
+                            searchController: visitCountController,
                           ),
                         ),
                         SizedBox(
@@ -176,6 +215,63 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                    width: double.maxFinite,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          backgroundColor: const Color(0xff0A4D68),
+                          padding: EdgeInsetsDirectional.symmetric(
+                              horizontal: 10.0, vertical: 15)),
+                      onPressed: () {
+                        if (nameController.text.isNotEmpty &&
+                            numberController.text.isNotEmpty &&
+                            addressController.text.isNotEmpty &&
+                            visitCountController.text.isNotEmpty) {
+                          final relative = Relative(
+                            name: nameController.text,
+                            phone: numberController.text,
+                            address: addressController.text,
+                            image: image?.path,
+                            visitFrequency: Frequency(
+                              visitCount: int.parse(visitCountController.text),
+                              frequencyVariable: 1,
+                              unit: textToFrequencyUnit(dropDownValue),
+                            ),
+                          );
+                          context.read<VisitsCubit>().addRelative(relative);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "الرجاء ملء جميع الحقول",
+                                style: TextStyle(
+                                  fontFamily: "El Messiri",
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(
+                        "إضافة",
+                        style: TextStyle(
+                          fontFamily: "El Messiri",
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   )
                 ],

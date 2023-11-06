@@ -1,15 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:korbaa/models/visit_frequency.dart';
-
-import '../relative/relative_cubit.dart';
+import 'package:korbaa/models/models.dart';
 
 part 'visits_state.dart';
 
 class VisitsCubit extends Cubit<VisitsState> {
   VisitsCubit() : super(const VisitsState());
 
-  void addRelative(RelativeState relative) {
+  void addRelative(Relative relative) {
     final relatives = state.relatives ?? [];
     relatives.add(relative);
     emit(state.copyWith(relatives: relatives));
@@ -17,7 +15,7 @@ class VisitsCubit extends Cubit<VisitsState> {
 
   void generateUpcomingVisits(VisitsState visitsState) {
     final relatives = state.relatives ?? [];
-    List<RelativeState> upcomingVisitsList = [];
+    List<Relative> upcomingVisitsList = [];
     for (var relative in relatives) {
       final list = generateVisits(relative);
       // look up how to merge lists in dart
@@ -31,7 +29,7 @@ class VisitsCubit extends Cubit<VisitsState> {
     emit(state.copyWith(upcomingVisits: upcomingVisitsList));
   }
 
-  List<RelativeState> generateVisits(RelativeState relative) {
+  List<Relative> generateVisits(Relative relative) {
     var startDate = relative.startDate!;
     var duration = frequencyToDuration(relative.visitFrequency!);
     var endDate = startDate.add(duration);
@@ -39,13 +37,13 @@ class VisitsCubit extends Cubit<VisitsState> {
     if (endDate.isBefore(DateTime.now())) {
       startDate = endDate;
       int index = state.relatives!.indexOf(relative);
-      List<RelativeState> relatives = state.relatives!;
+      List<Relative> relatives = state.relatives!;
       relatives[index] =
           relative.copyWith(startDate: endDate, endDate: endDate.add(duration));
       emit(state.copyWith(relatives: relatives));
     }
     duration = divideDuration(duration, relative.visitFrequency!.visitCount);
-    List<RelativeState> visitsDates = [];
+    List<Relative> visitsDates = [];
     for (var i = 0; i < relative.visitFrequency!.visitCount; i++) {
       visitsDates.add(relative.copyWith(
           visitDate: startDate.add(multiplyDuration(duration, i)),
@@ -54,8 +52,8 @@ class VisitsCubit extends Cubit<VisitsState> {
     return visitsDates;
   }
 
-  void addLog(RelativeState relative) {
-    List<RelativeState> logs = state.logs!;
+  void addLog(Relative relative) {
+    List<Relative> logs = state.logs!;
     logs.add(relative);
     emit(state.copyWith(logs: logs));
   }

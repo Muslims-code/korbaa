@@ -2,9 +2,9 @@
 part of 'visits_cubit.dart';
 
 class VisitsState extends Equatable {
-  final List<RelativeState>? upcomingVisits;
-  final List<RelativeState>? relatives;
-  final List<RelativeState>? logs;
+  final List<Relative>? upcomingVisits;
+  final List<Relative>? relatives;
+  final List<Relative>? logs;
   const VisitsState({
     this.upcomingVisits,
     this.relatives,
@@ -15,9 +15,9 @@ class VisitsState extends Equatable {
   List<Object?> get props => [upcomingVisits, relatives, logs];
 
   VisitsState copyWith({
-    List<RelativeState>? upcomingVisits,
-    List<RelativeState>? relatives,
-    List<RelativeState>? logs,
+    List<Relative>? upcomingVisits,
+    List<Relative>? relatives,
+    List<Relative>? logs,
   }) {
     return VisitsState(
       upcomingVisits: upcomingVisits ?? this.upcomingVisits,

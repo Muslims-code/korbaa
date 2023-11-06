@@ -17,6 +17,7 @@ class EditText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      
       keyboardType: isNumber ? TextInputType.number : TextInputType.text,
       controller: _searchController,
       cursorColor: Colors.black,

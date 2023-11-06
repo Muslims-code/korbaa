@@ -101,7 +101,6 @@ class HomeWidget extends StatelessWidget {
           Center(
               child: Container(
             width: 310,
-            height: 200,
             margin: const EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(16)),

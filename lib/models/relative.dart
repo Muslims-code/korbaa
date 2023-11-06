@@ -1,7 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'relative_cubit.dart';
+import 'package:equatable/equatable.dart';
 
-class RelativeState extends Equatable {
+import 'models.dart';
+
+class Relative extends Equatable {
   final String? name;
   final String? phone;
   final String? address;
@@ -10,7 +11,7 @@ class RelativeState extends Equatable {
   final DateTime? startDate;
   final DateTime? endDate;
   final Frequency? visitFrequency;
-  RelativeState({
+  const Relative({
     this.name,
     this.startDate,
     this.endDate,
@@ -21,7 +22,6 @@ class RelativeState extends Equatable {
     this.visitFrequency,
   });
 
-  @override
   List<Object?> get props => [
         name,
         phone,
@@ -33,7 +33,7 @@ class RelativeState extends Equatable {
         endDate
       ];
 
-  RelativeState copyWith({
+  Relative copyWith({
     String? name,
     String? phone,
     String? address,
@@ -43,7 +43,7 @@ class RelativeState extends Equatable {
     DateTime? endDate,
     Frequency? visitFrequency,
   }) {
-    return RelativeState(
+    return Relative(
       visitDate: visitDate ?? this.visitDate,
       startDate: startDate ?? this.startDate,
       endDate: endDate ?? this.endDate,
